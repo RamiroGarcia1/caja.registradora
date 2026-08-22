@@ -5,7 +5,6 @@ Console.WriteLine($"bienvenida, {nombreCajero}. Caja abierta ");
 
 const decimal PorcentajeDescuento10 = 0.10m;
 const decimal PorcentajeDescuento5 = 0.05m;
-
 const decimal DescuentoEfectivo = 0.10m;
 const decimal RecargoCredito = 0.15m;
 
@@ -42,11 +41,9 @@ do
             Console.WriteLine($"opcion invalida");
             break;
     }
-
 } while (opt != "2");
 
 decimal porcentajeAplicado = 0m;
-
 if (totalVenta > 50000m)
 {
     porcentajeAplicado = PorcentajeDescuento10;
@@ -93,16 +90,31 @@ do
             Console.WriteLine("Opcion invalida. Intente nuevamente");
             break;
     }
-
 } while (!opcionValida);
 
+decimal descuentoTotal = descuentoMonto + descuentoEfectivo;
 decimal totalFinal = subtotalConDescuento - descuentoEfectivo + recargoCredito;
 
-Console.WriteLine($"cantidad de productos: {cantidadProductos}");
-Console.WriteLine($"Subtotal: ${totalVenta}");
-Console.WriteLine($"Descuento por monto: ${descuentoMonto}");
-Console.WriteLine($"Descuento por efectivo: ${descuentoEfectivo}");
-Console.WriteLine($"Recargo por credito: ${recargoCredito}");
-Console.WriteLine($"Total final: ${totalFinal}");
+void ImprimirLinea()
+{
+    for (int i = 0; i < 30; i++)
+    {
+        Console.Write("-");
+    }
+    Console.WriteLine();
+}
+
+Console.WriteLine("\n");
+ImprimirLinea();
+Console.WriteLine($"       KIOSCO EL RECREO       ");
+ImprimirLinea();
+Console.WriteLine($"Cajero: {nombreCajero}");
+Console.WriteLine($"Productos: {cantidadProductos}");
+Console.WriteLine($"Subtotal: {totalVenta}");
+Console.WriteLine($"Descuento: {descuentoTotal}");
+Console.WriteLine($"Recargo: {recargoCredito}");
+ImprimirLinea();
+Console.WriteLine($"TOTAL: {totalFinal}");
+ImprimirLinea();
 
 Console.ReadLine();
